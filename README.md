@@ -30,13 +30,5 @@ npm install
 yarn install
 
 For Android
-npx react-native run-android
+npm run android
 
-
-### 4. Push the Updated README to GitHub
-
-1. After adding the `README.md`, run the following commands:
-   ```bash
-   git add README.md
-   git commit -m "Added instructions"
-   git push

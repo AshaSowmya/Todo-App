@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TodoList from './src/Todo';
 import ApiIntegrate from './src/ApiIntegrate';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Todo">
-        <Stack.Screen name="Todo" component={TodoList} />
-        <Stack.Screen name="Api" component={ApiIntegrate} />
-      </Stack.Navigator>
+      <Tab.Navigator initialRouteName="Todo">
+        <Tab.Screen name="Todo" component={TodoList} />
+        <Tab.Screen name="Api" component={ApiIntegrate} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

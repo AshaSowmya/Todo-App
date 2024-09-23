@@ -38,28 +38,28 @@ export default function Todo({navigation}) {
       <Button title="Delete" onPress={() => deleteTask(item.id)} color="#ff5c5c" />
     </View>
   );
+  // Custom button 
+  const CustomButton = ({title, onPress}) => (
+    <TouchableOpacity onPress={onPress} style={styles.button}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
 
   //actual rendering the list
   return (
     <KeyboardAvoidingView style={styles.parentContainer} behavior="padding">
  <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <Text style={styles.headerPart}>To-Do List</Text>
-      <View style={styles.buttonContainer}>
-      <Button
-        title="To view Api Integration Page"
-        onPress={() => navigation.navigate('Api')}
-      />
-    </View>
+      
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputBox}
           placeholder="Enter a task"
           value={task}
           onChangeText={(text) => setTask(text)}
-          multiline={true} 
-          numberOfLines={4}
+        
         />
-        <Button title="Add Task" onPress={addTask} style={{alignItems:'center'}} />
+        <CustomButton title="Add Task" onPress={addTask} />
       
       </View>
       <FlatList
@@ -103,16 +103,28 @@ const styles = StyleSheet.create({
     marginRight: 10,
     textAlignVertical: 'top',
   },
+  button: {
+    backgroundColor: '#007BFF', 
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: 'center', 
+    justifyContent: 'center', 
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16, 
+  },
   taskContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start', // Align items at the top for multiline text
+    alignItems: 'flex-start', 
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc'
   },
   taskTextContainer: {
-    flex: 1, // Ensure text container takes up available space
+    flex: 1, 
   },
   
   taskText: {
