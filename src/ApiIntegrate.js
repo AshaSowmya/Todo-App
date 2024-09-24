@@ -10,6 +10,7 @@ import {
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isConnected, setIsConnected] = useState(true);
   
   // Function to fetch tasks from the API
   const fetchTasks = async () => {
@@ -40,6 +41,15 @@ const Tasks = () => {
       </View>
     );
   }
+
+    // Show no internet connection message if not connected
+    if (!isConnected) {
+      return (
+        <View style={styles.loadingContainer}>
+          <Text style={styles.errorText}>No internet connection. Please check your connection and try again.</Text>
+        </View>
+      );
+    }
 
   return (
     <View style={styles.container}>
